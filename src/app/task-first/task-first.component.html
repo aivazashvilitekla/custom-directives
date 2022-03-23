@@ -1,0 +1,32 @@
+<h1>Task 1:</h1>
+<div class="task-fist-container">
+  <button class="btn btn-primary" (click)="loadUsers()">Load Users</button>
+  <p *ngIf="loading">loading</p>
+  <p class="user-names">{{ users | UserNames }}</p>
+  <div class="users">
+    <ng-container *ngIf="users.length; else empty">
+      <ng-container *ngFor="let user of users">
+        <div
+          class="card"
+          style="width: 18rem"
+          appClickOnElement
+          [appSetBackgroundColorDirective]="user.status"
+        >
+          <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }}</h5>
+            <h6 class="card-subtitle mb-2">about {{ user.about }}</h6>
+            <p class="card-text">
+              {{ user.birthDate | CalculateAge }} years old
+            </p>
+            <span class="btn" [ngClass]="getClasses(user.status)">{{
+              user.status
+            }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+<ng-template #empty>
+  <p *ngIf="!loading" class="empty">list is empty</p>
+</ng-template>

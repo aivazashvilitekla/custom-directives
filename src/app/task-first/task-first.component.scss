@@ -1,0 +1,18 @@
+.task-fist-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .users {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px 0;
+  }
+}
+span {
+  cursor: default;
+}
+.card {
+  color: white;
+}
